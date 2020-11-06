@@ -1,2 +1,3 @@
+include ':app:GoDutchLib'
 include ':app'
 rootProject.name = "GoDutchLeh"
