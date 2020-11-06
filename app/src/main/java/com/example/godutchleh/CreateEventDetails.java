@@ -22,6 +22,7 @@ public class CreateEventDetails extends AppCompatActivity {
     Button AddPhotoButton;
     Button SaveButton;
     Menu OverallMenu;
+    Button BackArrowButton;
 
 
     @Override

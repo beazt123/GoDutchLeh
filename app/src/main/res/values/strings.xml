@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GoDutchLeh</string>
+    <string name="pageHeader">CREATE\n EVENT</string>
 </resources>
