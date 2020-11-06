@@ -15,12 +15,11 @@
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkGreen"
+            android:background="@color/black"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-            <include
-                layout="@layout/create_event_title_section">
+            <include layout="@layout/create_event_title_section">
 
             </include>
 
@@ -34,16 +33,24 @@
 
     </include>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp">
+
+    </View>
+
 
     <include layout="@layout/enter_event_name">
 
     </include>
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -56,10 +63,60 @@
 
         </Button>
 
+
     </RelativeLayout>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="80dp">
+
+    </View>
 
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_button"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="@string/addPhotoButton"
+            android:background="?selectableItemBackground"
+            android:padding="20dp"
+            android:id="@+id/addEventPhotoButton"
+            android:layout_centerInParent="true">
+
+        </Button>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="70dp">
+        
+    </View>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saveButton"
+            android:layout_gravity="center"
+            android:background="?selectableItemBackground">
+
+        </Button>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
