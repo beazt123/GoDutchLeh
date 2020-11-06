@@ -3,4 +3,6 @@
     <string name="pageHeader">CREATE\n EVENT</string>
     <string name="detailsTab">Details</string>
     <string name="membersTab">Members</string>
+    <string name="enterEventName">Event Name: </string>
+    <string name="addMembersButton">Add Members</string>
 </resources>
