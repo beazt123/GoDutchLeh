@@ -8,10 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GoDutchLeh"
-        >
-        <activity android:name=".CreateEventDetails"></activity>
-
+        android:theme="@style/Theme.GoDutchLeh">
+        <activity android:name=".CreateEventMembers"></activity>
+        <activity android:name=".CreateEventDetails" />
     </application>
 
 </manifest>

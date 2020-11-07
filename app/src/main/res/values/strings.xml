@@ -7,4 +7,6 @@
     <string name="addMembersButton">Add Members</string>
     <string name="addPhotoButton">Add Photo</string>
     <string name="saveButton">Save</string>
+    <string name="searchMembers">Search: </string>
+    <string name="emptyMemberName">Add Member name</string>
 </resources>
