@@ -45,4 +45,7 @@ dependencies {
 
     //for profile pic circle image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //adding GoDutchLib
+    implementation project(':app:GoDutchLib')
 }

@@ -40,7 +40,7 @@
     </View>
 
 
-    <include layout="@layout/enter_event_name">
+    <include layout="@layout/enter_event_name_section">
 
     </include>
 

@@ -2,18 +2,22 @@ package com.example.godutchlib;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Member implements Parcelable {
 
-    static HashMap<Integer, Member> mUsedIds;
-    static ArrayList<Integer> mIdList;
+    private static final String TAG = "Member";
+
+    static ArrayList<Member> mAllMembers = new ArrayList<>();
+    static ArrayList<Integer> mIdList = new ArrayList<>();
     String mName;
-    Integer mId;
+    Integer mId=null;
     boolean mStatus;
     double mDebt;
     double mLent;
@@ -47,22 +51,40 @@ public class Member implements Parcelable {
     public static void setIds(int n) {
         // populate mIdList with a bunch of numbers from 0 to n (simulate Ids from backend)
         for (int i=0; i<n; i++) {
+            Log.d(TAG, "setIds: set id "+i);
             mIdList.add(i);
         }
+        Log.d(TAG, "setIds: created all fake ids ");
+    }
+
+    private List<Integer> getUsedIds() {
+        List<Integer> usedIdsList = new LinkedList<>();
+        for (Member member : mAllMembers) {
+            usedIdsList.add(member.mId);
+        }
+        return usedIdsList;
     }
 
     public Member(String name) {
         // create a Member obj with name and first available Id in mIdList
-        for (int id : mIdList) {
-            if (!(mUsedIds.keySet().contains(id))) {
-                this.mId = id;
+        List<Integer> usedIdsList = getUsedIds();
+        while (mId==null) {
+            for (int id : mIdList) {
+                if (!(usedIdsList.contains(id))) {
+                    this.mId = id;
+                    break;
+                }
             }
         }
+        mAllMembers.add(this);
+        Log.d(TAG, "Member: new member added: " + this);
         mStatus = NOT_IN_DEBT;
         mDebt = 0;
         mLent = 0;
+        mName = name;
 
-        mUsedIds.put(this.mId, this);
+        System.out.println("all members: "+mAllMembers);
+        Log.d(TAG, "Member: a member has been initialized");
     }
 
     @Override
@@ -84,7 +106,28 @@ public class Member implements Parcelable {
     @Override
     public String toString() {
         return "Member{" +
-                "mId=" + mId +
+                "Id=" + mId +
+                "Name=" + mName +
                 '}';
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public Integer getId() {
+        return mId;
+    }
+
+    public boolean isStatus() {
+        return mStatus;
+    }
+
+    public double getDebt() {
+        return mDebt;
+    }
+
+    public double getLent() {
+        return mLent;
     }
 }
