@@ -2,51 +2,86 @@ package com.example.godutchleh.eventlist;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.godutchleh.R;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class EventListActivity extends AppCompatActivity {
+    TabLayout tabLayout;
+    ViewPager2 viewPager;
 
-    //save event data
-    private List<Event> EventList=new ArrayList<>();
+    //save fragments
+    List<Fragment> fragments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_list);
 
-        // get the date and use it to create adapter
-        testEvents(); //initialize
-        EventAdapter adapter=new EventAdapter(EventListActivity.this, R.layout.event_item, EventList);
+        tabLayout = findViewById(R.id.event_list_tablayout);
+        viewPager = findViewById(R.id.event_list_viewpager);
 
-        // transfer the data from adapter to listView
-        ListView listView=findViewById(R.id.event_list_view);
-        listView.setAdapter(adapter);
+        tabLayout.addTab(tabLayout.newTab().setText("Ongoing"));
+        tabLayout.addTab(tabLayout.newTab().setText("Completed"));
 
-        // onClick method for each event
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        //save instances of fragment to fragments
+        fragments.add(new EventListFragment());
+        fragments.add(new EventListFragment());
+
+        viewPager.setAdapter(new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
+            @NonNull
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Event fruit=EventList.get(position);
-                Toast.makeText(EventListActivity.this, fruit.getEventName(), Toast.LENGTH_SHORT).show();
+            public Fragment createFragment(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getItemCount() {
+                return fragments.size();
             }
         });
-    }
 
-    private void testEvents(){
-        for(int i=0;i<5;i++){
-            Event a=new Event("Event a", "07/11/2020", "20", "3", R.drawable.ashketchum);
-            EventList.add(a);
-            Event b=new Event("Event b", "08/11/2020", "15", "4", R.drawable.ashketchum);
-            EventList.add(b);
-        }
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+
     }
 }
+

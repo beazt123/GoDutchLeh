@@ -28,7 +28,6 @@ public class Event {
     public String getEventMembers(){
         return eventMembers;
     }
-
     public int getImageId(){
         return imageId;
     }
