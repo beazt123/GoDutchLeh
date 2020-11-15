@@ -1,12 +1,6 @@
 package com.example.godutchleh.eventlist;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +14,6 @@ import java.util.List;
 
 import com.example.godutchleh.R;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class EventListActivity extends AppCompatActivity {
     TabLayout tabLayout;
