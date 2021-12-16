@@ -5,7 +5,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   formatting:
-    runs-on: [self-hosted, x64, linux, Docker]
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the current repo
         uses: actions/checkout@v2 # v2 minimum required
