@@ -1,0 +1,18 @@
+# Example workflow
+name: Format
+
+on: [push, workflow_dispatch]
+
+jobs:
+  formatting:
+    runs-on: [self-hosted, x64, linux, Docker]
+    steps:
+      - name: Check out the current repo
+        uses: actions/checkout@v2 # v2 minimum required
+      - name: Use Google java format GitHub Action
+        uses: axel-op/googlejavaformat-action@v3
+        with:
+          args: "--set-exit-if-changed"
+          skipCommit: true
+      - run: echo "Formatted code without overwriting"
+
