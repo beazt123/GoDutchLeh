@@ -1,20 +1,18 @@
 package com.example.godutchlib;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Item {
 
-    int mId;
-    String mName;
-    double mCost;
-    ArrayList<Member> mMembersList;
-    HashMap<Member, Double> mExpensesMap;
+  int mId;
+  String mName;
+  double mCost;
+  ArrayList<Member> mMembersList;
+  HashMap<Member, Double> mExpensesMap;
 
-    public HashMap<Member, Double> splitExpense() {
+  public HashMap<Member, Double> splitExpense() {
 
-        return mExpensesMap;
-
-    }
+    return mExpensesMap;
+  }
 }
