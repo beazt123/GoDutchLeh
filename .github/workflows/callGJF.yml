@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-GJF:
-    uses: beazt123/googlejavaformat-action/.github/workflows/reusableGJF.yml@main
+    uses: beazt123/googlejavaformat-action/.github/workflows/reusableGJF.yml@master
     
   status:
     needs: call-GJF
